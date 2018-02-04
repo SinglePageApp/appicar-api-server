@@ -1,0 +1,11 @@
+type Store {
+  _id: String
+	name: String
+	date: String
+	description: String
+	address: String
+	featured: Boolean
+	lat: Float
+	lng: Float
+  image: String
+}
