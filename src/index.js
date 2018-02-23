@@ -4,13 +4,17 @@ import chalk from 'chalk'
 import bodyParser from 'body-parser'
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express'
 import mongoose from 'mongoose'
+import cors from 'express-cors'
 
 import schema from './graphql/schema'
 import config from './config'
 
 const app = express()
 
-mongoose.connect(config.MONGO_URL)
+const corsOptions = {
+  origin: 'localhost',
+  credentials: true
+}
 
 const Store = mongoose.model('stores', {
   _id: String,
@@ -24,6 +28,8 @@ const Store = mongoose.model('stores', {
   image: String
 })
 
+mongoose.connect(config.MONGO_URL)
+
 app.use('/', express.static(path.resolve(__dirname, '/../public')))
 
 app.get('/', (req, res) => {
@@ -31,6 +37,8 @@ app.get('/', (req, res) => {
     message: 'I am a server route and can also be hot reloaded!'
   })
 })
+
+app.use(cors(corsOptions))
 
 app.use('/graphql', bodyParser.json(), graphqlExpress({
   schema,
