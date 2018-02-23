@@ -12,7 +12,7 @@ import config from './config'
 const app = express()
 
 const corsOptions = {
-  origin: 'localhost',
+  origin: '*',
   credentials: true
 }
 
