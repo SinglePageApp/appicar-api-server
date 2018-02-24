@@ -53,9 +53,10 @@ app.use(
 
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
 
-app.listen(config.PORT, () => {
+app.listen(CONFIG.PORT, () => {
   const log = console.log
   log('\n')
+  log(chalk.bgYellow.black(`MongoDB URL: ${CONFIG.MONGO_URL}`))
   log(
     chalk.bgGreen.black(
       `Server listening on http://localhost:${CONFIG.PORT}/ ..`
