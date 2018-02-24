@@ -4,7 +4,7 @@ import chalk from 'chalk'
 import bodyParser from 'body-parser'
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express'
 import mongoose from 'mongoose'
-import cors from 'express-cors'
+import cors from 'cors'
 
 import config from './config'
 import schema from './graphql/schema'
@@ -12,7 +12,7 @@ import schema from './graphql/schema'
 const app = express()
 
 const corsOptions = {
-  origin: '*',
+  origin: 'http://localhost:4200',
   credentials: true
 }
 
