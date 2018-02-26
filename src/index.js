@@ -4,15 +4,15 @@ import chalk from 'chalk'
 import bodyParser from 'body-parser'
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express'
 import mongoose from 'mongoose'
-import cors from 'express-cors'
+import cors from 'cors'
 
-import schema from './graphql/schema'
 import config from './config'
+import schema from './graphql/schema'
 
 const app = express()
 
 const corsOptions = {
-  origin: '*',
+  origin: 'http://localhost:4200',
   credentials: true
 }
 
@@ -28,7 +28,9 @@ const Store = mongoose.model('stores', {
   image: String
 })
 
-mongoose.connect(config.MONGO_URL)
+const CONFIG = config[process.env.NODE_ENV ? process.env.NODE_ENV : 'dev']
+
+mongoose.connect(CONFIG.MONGO_URL)
 
 app.use('/', express.static(path.resolve(__dirname, '/../public')))
 
@@ -40,17 +42,26 @@ app.get('/', (req, res) => {
 
 app.use(cors(corsOptions))
 
-app.use('/graphql', bodyParser.json(), graphqlExpress({
-  schema,
-  context: { Store }
-}))
+app.use(
+  '/graphql',
+  bodyParser.json(),
+  graphqlExpress({
+    schema,
+    context: { Store }
+  })
+)
 
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
 
-app.listen(config.PORT, () => {
+app.listen(CONFIG.PORT, () => {
   const log = console.log
   log('\n')
-  log(chalk.bgGreen.black(`Server listening on http://localhost:${config.PORT}/ ..`))
+  log(chalk.bgYellow.black(`MongoDB URL: ${CONFIG.MONGO_URL}`))
+  log(
+    chalk.bgGreen.black(
+      `Server listening on http://localhost:${CONFIG.PORT}/ ..`
+    )
+  )
   log('\n')
   log(`${chalk.blue('/graphql')}  - endpoint for queries`)
   log(`${chalk.blue('/graphiql')} - endpoint for testing`)
