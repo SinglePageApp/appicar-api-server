@@ -4,6 +4,7 @@ type Store {
 	date: String
 	description: String
 	address: String
+	city: String
 	featured: Boolean
 	lat: Float
 	lng: Float

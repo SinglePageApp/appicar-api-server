@@ -1,6 +1,8 @@
 type Query {
   counter: Counter,
-  stores: [Store]
+  stores(description: String): [Store],
+  featuredStores: [Store],
+  store(_id: String): Store
 }
 
 schema {
