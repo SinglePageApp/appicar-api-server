@@ -11,11 +11,6 @@ import schema from './graphql/schema'
 
 const app = express()
 
-const corsOptions = {
-  origin: 'http://localhost:4200',
-  credentials: true
-}
-
 const Store = mongoose.model('stores', {
   _id: String,
   name: String,
@@ -40,7 +35,7 @@ app.get('/', (req, res) => {
   })
 })
 
-app.use(cors(corsOptions))
+app.use(cors(CONFIG.CORS_OPTIONS))
 
 app.use(
   '/graphql',
