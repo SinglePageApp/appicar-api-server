@@ -5,20 +5,18 @@ const resolvers = {
     counter () {
       return counter
     },
-    stores: async (parent, args, { Store }) => {
-      let stores = await Store.find()
-
-      /*stores = stores.map((store) => {
-        store._id = store._id.toString()
-      })*/
+    store: async (parent, args, { Store }) => {
+      let stores = await Store.findOne(args)
 
       return stores
-    }
-  },
-  Mutation: {
-    createStore: async (parent, args, { Store }) => {
-      const store = await new Store(args).save()
-      store._id = store._id.toString()
+    },
+    stores: async (parent, args, { Store }) => {
+      let stores = await Store.find(args)
+
+      return stores
+    },
+    featuredStores: async (parent, args, { Store }) => {
+      let store = await Store.find({ featured: true })
 
       return store
     }
