@@ -8,7 +8,7 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "build": "NODE_ENV=prod webpack",
     "lint": "eslint --ext .js",
-    "start": "export NODE_ENV=prod && npm run build && node dist/bundle.js"
+    "start": "export NODE_ENV=prod && node bundle.js"
   },
   "repository": {
     "type": "git",
