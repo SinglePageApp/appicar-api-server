@@ -1,0 +1,4 @@
+type MenuItem {
+	food: [Food],
+	drink: [Drink]
+}

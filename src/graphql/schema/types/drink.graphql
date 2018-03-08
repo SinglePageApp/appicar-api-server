@@ -1,0 +1,10 @@
+type Drink {
+	_id: String,
+	type: String,
+	category: String,
+	date: String,
+	name: Translatable,
+	paymentMethods: [String],
+	price: [Price],
+	picture: String
+}
