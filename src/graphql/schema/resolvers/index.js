@@ -11,7 +11,17 @@ const resolvers = {
       return stores
     },
     stores: async (parent, args, { Store }) => {
-      let stores = await Store.find(args)
+      let stores = []
+      if (args.menuItemType) {
+        stores = await Store.find({
+          ['menu.items.' + args.menuItemType.toLowerCase() + '.category']: {
+            $regex: '.*' + args.menuItemCategory + '.*',
+            $options: 'i'
+          }
+        })
+      } else {
+        stores = await Store.find(args)
+      }
 
       return stores
     },

@@ -9,4 +9,5 @@ type Store {
 	lat: Float
 	lng: Float
   image: String
+	menu: Menu
 }

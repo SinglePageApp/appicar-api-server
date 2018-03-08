@@ -1,0 +1,4 @@
+type Menu {
+  items: MenuItem,
+  promotions: [Promotion]
+}

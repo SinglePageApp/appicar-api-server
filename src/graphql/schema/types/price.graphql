@@ -1,0 +1,4 @@
+type Price {
+  currency: String,
+  value: Float
+}
