@@ -1,0 +1,5 @@
+type Translatable {
+  en: String,
+  es: String,
+  it: String
+}
