@@ -15,6 +15,7 @@ const Store = mongoose.model('stores', {
   _id: String,
   name: String,
   date: String,
+  category: String,
   description: String,
   address: String,
   city: String,
