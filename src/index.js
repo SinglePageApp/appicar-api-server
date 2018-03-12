@@ -19,6 +19,7 @@ const Store = mongoose.model('stores', {
   description: String,
   address: String,
   city: String,
+  country: String,
   featured: Boolean,
   lat: Number,
   lng: Number,
