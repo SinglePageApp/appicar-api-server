@@ -13,6 +13,7 @@ const app = express()
 
 const Store = mongoose.model('stores', {
   _id: String,
+  URI: String,
   name: String,
   date: String,
   description: String,

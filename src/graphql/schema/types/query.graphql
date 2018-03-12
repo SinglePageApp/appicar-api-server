@@ -3,7 +3,8 @@ type Query {
   stores(description: String): [Store],
   stores(menuItemType: String, menuItemCategory: String): [Store],
   featuredStores: [Store],
-  store(_id: String): Store
+  store(_id: String): Store,
+  store(URI: String): Store
 }
 
 schema {

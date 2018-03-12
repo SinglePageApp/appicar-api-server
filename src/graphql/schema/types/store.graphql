@@ -1,5 +1,6 @@
 type Store {
   _id: String
+	URI: String
 	name: String
 	date: String
 	description: String
