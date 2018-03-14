@@ -25,7 +25,8 @@ const Store = mongoose.model('stores', {
   lat: Number,
   lng: Number,
   image: String,
-  menu: Object
+  menu: Object,
+  reviews: Array
 })
 
 const CONFIG = config[process.env.NODE_ENV ? process.env.NODE_ENV : 'dev']

@@ -13,10 +13,13 @@ import food from './types/food.graphql'
 import drink from './types/drink.graphql'
 import price from './types/price.graphql'
 import promotion from './types/promotion.graphql'
+import review from './types/review.graphql'
 import translatable from './types/translatable.graphql'
 
 
-const typeDefs = mergeTypes([counter, query, store, item, menu, menuitem, food, drink, price, promotion, translatable])
+const typeDefs = mergeTypes([
+  counter, query, store, item, menu, menuitem, food, drink, price, promotion, review, translatable
+])
 
 const schema = makeExecutableSchema({
   typeDefs,
