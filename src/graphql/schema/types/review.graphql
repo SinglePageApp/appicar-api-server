@@ -5,5 +5,5 @@ type Review {
 	clientPicture: String
 	date: String
 	points: Int
-	text: String
+	text: Translatable
 }
