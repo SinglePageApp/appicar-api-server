@@ -6,9 +6,23 @@ const resolvers = {
       return counter
     },
     store: async (parent, args, { Store }) => {
-      let stores = await Store.findOne(args)
+      let store = await Store.findOne(args)
 
-      return stores
+      const avgRes = await Store.aggregate([
+        { '$unwind': '$reviews' },
+        { '$match': { URI: args.URI } },
+        {
+          '$group': {
+            '_id': { '_id': '$_id' },
+            'points': { '$avg': '$reviews.points' }
+          }
+        },
+        { '$project': { '_id': 0, 'points': 1 } }
+      ])
+      
+      store.points = Math.ceil(avgRes[0].points)
+
+      return store
     },
     stores: async (parent, args, { Store }) => {
       let stores = []
