@@ -4,6 +4,7 @@ import { mergeTypes } from 'merge-graphql-schemas'
 import resolvers from './resolvers'
 
 import query from './types/query.graphql'
+import mutation from './types/mutation.graphql'
 import counter from './types/counter.graphql'
 import store from './types/store.graphql'
 import item from './types/item.graphql'
@@ -18,7 +19,7 @@ import translatable from './types/translatable.graphql'
 
 
 const typeDefs = mergeTypes([
-  counter, query, store, item, menu, menuitem, food, drink, price, promotion, review, translatable
+  counter, query, mutation, store, item, menu, menuitem, food, drink, price, promotion, review, translatable
 ])
 
 const schema = makeExecutableSchema({

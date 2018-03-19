@@ -1,3 +1,8 @@
+import email from 'emailjs/email'
+
+import config from '../../../config'
+
+const MAIL = config[process.env.NODE_ENV ? process.env.NODE_ENV : 'dev'].MAIL
 const counter = { count: 4 }
 
 const resolvers = {
@@ -43,6 +48,23 @@ const resolvers = {
       let store = await Store.find({ featured: true })
 
       return store
+    }
+  },
+  Mutation: {
+    sendEmail: async (parent, args) => {
+      const server = email.server.connect(MAIL.server)
+      const mailOptions = args
+      mailOptions.to = MAIL.to
+      let successful = false
+      // send the message and get a callback with an error or details of the message that was sent
+      server.send(mailOptions, (err, message) => {
+        console.log(err)
+        if (!err) {
+          successful = true
+        }
+      })
+
+      return successful
     }
   }
 }
