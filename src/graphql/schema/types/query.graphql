@@ -1,9 +1,14 @@
 type Query {
-  counter: Counter,
+  counter: Counter, 
   stores(description: String): [Store],
+  stores(skip: Int, limit: Int): [Store],
+  stores(category: String, skip: Int, limit: Int): [Store],
   stores(menuItemType: String, menuItemCategory: String): [Store],
+  stores(menuItemType: String, menuItemCategory: String, skip: Int, limit: Int): [Store], 
+  store(_id: String): Store, 
+  store(URI: String): Store,
   featuredStores: [Store],
-  store(_id: String): Store
+  storesCount: Int
 }
 
 schema {

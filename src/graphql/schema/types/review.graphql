@@ -1,0 +1,9 @@
+type Review {
+  _id: String
+	clientId: String
+	clientName: String
+	clientPicture: String
+	date: String
+	points: Int
+	text: Translatable
+}

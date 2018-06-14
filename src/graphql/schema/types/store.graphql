@@ -1,13 +1,18 @@
 type Store {
   _id: String
+	URI: String
 	name: String
 	date: String
-	description: String
+	category: String
+	description: Translatable
 	address: String
+	country: String
 	city: String
 	featured: Boolean
 	lat: Float
 	lng: Float
   image: String
 	menu: Menu
+	reviews: [Review]
+	points: Int
 }
