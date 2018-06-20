@@ -1,0 +1,7 @@
+type App {
+  _id: String
+	apikey: String
+	secret: String
+	token: String
+	expiration: String
+}

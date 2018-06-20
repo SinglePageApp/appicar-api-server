@@ -1,3 +1,4 @@
-type Mutation { 
+type Mutation {
+  login(apikey: String, secret: String): String,
   sendEmail(from: String, subject: String, text: String): Boolean
 }

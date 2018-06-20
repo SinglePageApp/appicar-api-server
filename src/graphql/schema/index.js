@@ -2,7 +2,6 @@ import { makeExecutableSchema } from 'graphql-tools'
 import { mergeTypes } from 'merge-graphql-schemas'
 
 import resolvers from './resolvers'
-
 import query from './types/query.graphql'
 import mutation from './types/mutation.graphql'
 import counter from './types/counter.graphql'
