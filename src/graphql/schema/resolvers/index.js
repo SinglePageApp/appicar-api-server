@@ -14,7 +14,6 @@ import {
   throwForbiddenError
 } from './utils'
 
-
 const MAIL = config[process.env.NODE_ENV ? process.env.NODE_ENV : 'dev'].MAIL
 const counter = { count: 4 }
 

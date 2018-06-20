@@ -11,7 +11,6 @@ import schema from './graphql/schema'
 import App from './models/App'
 import Store from './models/Store'
 
-
 const app = express()
 const CONFIG = config[process.env.NODE_ENV ? process.env.NODE_ENV : 'dev']
 
