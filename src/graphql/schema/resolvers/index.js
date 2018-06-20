@@ -117,7 +117,13 @@ const resolvers = {
      * - featuredStores: [Store]
      */
     featuredStores: async (parent, args, { req, db }) => {
-      let stores = await db.Store.find({ featured: true })
+      let stores = null
+      
+      if (await checkAuth(req, db)) {
+        stores = await db.Store.find({ featured: true })
+      } else {
+        throwForbiddenError()
+      }
 
       return stores
     }
