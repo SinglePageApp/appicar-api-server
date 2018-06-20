@@ -13,15 +13,20 @@ const app = express()
 
 const Store = mongoose.model('stores', {
   _id: String,
+  URI: String,
   name: String,
   date: String,
-  description: String,
+  category: String,
+  description: Object,
   address: String,
   city: String,
+  country: String,
   featured: Boolean,
   lat: Number,
   lng: Number,
-  image: String
+  image: String,
+  menu: Object,
+  reviews: Array
 })
 
 const CONFIG = config[process.env.NODE_ENV ? process.env.NODE_ENV : 'dev']

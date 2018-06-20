@@ -1,0 +1,3 @@
+type Mutation { 
+  sendEmail(from: String, subject: String, text: String): Boolean
+}

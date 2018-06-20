@@ -5,6 +5,13 @@ export default {
     CORS_OPTIONS: {
       origin: '*',
       credentials: true
+    },
+    MAIL: {
+      server: {
+        host: 'localhost',
+        ssl: false
+      },
+      to: 'spa.singlepageapp@gmail.com'
     }
   },
   'prod': {

@@ -1,0 +1,8 @@
+type Promotion {
+	_id: String,
+	date: String,
+	name: Translatable,
+	paymentMethods: [String],
+	price: [Price],
+	picture: String
+}
