@@ -46,15 +46,19 @@ const resolvers = {
 
       if (args.menuItemType) {
         stores = await Store.find({
-          ['menu.items.' + args.menuItemType.toLowerCase() + '.category']: {
-            $regex: '.*' + args.menuItemCategory + '.*',
-            $options: 'i'
+          ['menu.items.' + args.menuItemType.toLowerCase()]: {
+            $elemMatch: {
+              ['name.' + args.language]: {
+                $regex: '.*' + args.menuItemName + '.*',
+                $options: 'i'
+              }
+            }
           }
         }).skip(skip).limit(limit)
       } else {
         stores = await Store.find(args).skip(skip).limit(limit)
       }
-
+      
       return stores
     },
     featuredStores: async (parent, args, { Store }) => {

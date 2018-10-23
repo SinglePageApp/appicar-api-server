@@ -3,7 +3,7 @@ type Query {
   storesCount: Int,
   stores(skip: Int, limit: Int): [Store],
   stores(category: String, skip: Int, limit: Int): [Store],
-  stores(menuItemType: String, menuItemCategory: String, skip: Int, limit: Int): [Store],
+  stores(menuItemType: String, menuItemName: String, language: String, skip: Int, limit: Int): [Store],
   featuredStores: [Store],
   store(_id: String): Store,
   store(URI: String): Store
