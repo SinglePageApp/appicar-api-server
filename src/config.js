@@ -18,7 +18,11 @@ export default {
     PORT: 9000,
     MONGO_URL: 'mongodb://mongodb.localhost:27017/appicar',
     CORS_OPTIONS: {
-      origin: 'http://appicar.com',
+      origin: [
+        'http://angular.appicar.com',
+        'http://react.appicar.com',
+        'http://vue.appicar.com'
+      ],
       credentials: true
     }
   }
